@@ -37,7 +37,7 @@ export default {
         const userPrompt = body.prompt || '';
 
         // 👇 અહીં તમારી બનાવેલી Google Gemini API Key મૂકવાની છે (અવતરણ ચિહ્નો "" ની અંદર)
-        const GEMINI_API_KEY = "તમારી_અસલી_API_KEY_અહીં_મૂકો";
+        const GEMINI_API_KEY = "AQ.Ab8RN6KvlkoyTNZkdyrI6uF8I3uGbWBFcDwjwiueJnNWbCcRWA";
 
         // Call Google Gemini API
         const geminiResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
