@@ -48,7 +48,7 @@ export default {
 
         // 🔑 1 TO 10 AI API KEYS CONFIGURATION
         const API_KEYS = {
-          gemini: "તમારી_જેમિની_API_KEY_અહીં_મૂકો",
+          gemini: "AQ.Ab8RN6KvlkoyTNZkdyrI6uF8I3uGbWBFcDwjwiueJnNWbCcRWA",
           gpt: "તમારી_GPT_API_KEY_અહીં_મૂકો",
           deepseek: "તમારી_DEEPSEEK_API_KEY_અહીં_મૂકો",
           claude: "તમારી_CLAUDE_API_KEY_અહીં_મૂકો",
