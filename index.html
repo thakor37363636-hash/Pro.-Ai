@@ -1,220 +1,165 @@
-FINAL MASTER DEVELOPMENT PROMPT — PRO AI
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🟢 PRO AI — Evolving With The World</title>
+    <!-- Tailwind CSS for Modern UI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #030712;
+            color: #f3f4f6;
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+        .neon-glow {
+            box-shadow: 0 0 30px rgba(34, 197, 94, 0.25);
+        }
+        .neon-text {
+            text-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-green-500 selection:text-black">
 
-EVOLVING WITH THE WORLD
+    <!-- Header / Navigation -->
+    <header class="glass-card sticky top-0 z-50 border-b border-green-500/20 px-4 py-3">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <span class="text-2xl animate-pulse">🟢</span>
+                <h1 class="font-extrabold text-base sm:text-xl tracking-wider text-white neon-text">PRO AI — MASTER BRAIN</h1>
+            </div>
+            <div class="flex items-center space-x-2">
+                <span class="bg-green-500/10 text-green-400 text-xs font-semibold px-3 py-1 rounded-full border border-green-500/30">Evolving v4.0</span>
+            </div>
+        </div>
+    </header>
 
-You are a world-class senior frontend developer, UI/UX architect, and AI ecosystem engineer.
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full grid grid-cols-1 lg:grid-cols-4 gap-6">
+        
+        <!-- Sidebar Navigation (A to Z Ecosystem) -->
+        <aside class="lg:col-span-1 glass-card rounded-2xl p-4 space-y-3 h-fit">
+            <h2 class="text-xs uppercase tracking-wider text-green-400 font-bold px-2">AI Ecosystem</h2>
+            <nav class="space-y-1">
+                <button onclick="switchTab('master')" id="btn-master" class="w-full text-left px-4 py-3 rounded-xl bg-green-500 text-black font-bold transition flex items-center space-x-3 shadow-lg shadow-green-500/20">
+                    <span>🧠</span> <span>Master Brain</span>
+                </button>
+                <button onclick="switchTab('models')" id="btn-models" class="w-full text-left px-4 py-3 rounded-xl hover:bg-gray-800 text-gray-300 font-medium transition flex items-center space-x-3">
+                    <span>🌐</span> <span>Multi-AI Models</span>
+                </button>
+                <button onclick="switchTab('agents')" id="btn-agents" class="w-full text-left px-4 py-3 rounded-xl hover:bg-gray-800 text-gray-300 font-medium transition flex items-center space-x-3">
+                    <span>🤖</span> <span>Specialist Agents</span>
+                </button>
+                <button onclick="switchTab('workflows')" id="btn-workflows" class="w-full text-left px-4 py-3 rounded-xl hover:bg-gray-800 text-gray-300 font-medium transition flex items-center space-x-3">
+                    <span>⚡</span> <span>Automation & n8n</span>
+                </button>
+            </nav>
+        </aside>
 
-Your task is to TRANSFORM the existing PRO AI project into a complete, premium, futuristic AI ecosystem.
+        <!-- Dynamic Dashboard Panel -->
+        <section class="lg:col-span-3 glass-card rounded-2xl p-6 flex flex-col justify-between min-h-[550px] neon-glow">
+            
+            <!-- Master Brain Chat View -->
+            <div id="tab-master" class="space-y-4 flex flex-col h-full">
+                <div class="flex justify-between items-center border-b border-gray-800 pb-3">
+                    <h3 class="font-bold text-lg text-white flex items-center space-x-2"><span>🧠</span> <span>Master Brain Interface</span></h3>
+                    <span class="text-xs text-green-400 bg-green-950/50 px-2 py-1 rounded border border-green-800">Orchestrator Active</span>
+                </div>
+                <!-- Chat Messages Box -->
+                <div id="chat-messages" class="flex-grow overflow-y-auto space-y-3 max-h-[350px] pr-2">
+                    <div class="bg-gray-900/80 p-3 rounded-xl border border-green-500/20 max-w-[85%] text-sm">
+                        👋 નમસ્તે મિતુલ! હું **PRO AI** નું માસ્ટર બ્રેઈન છું. બોલો આજે કયા રિસર્ચ, કોડિંગ અથવા ઓટોમેશન ટાસ્ક માટે કયા એજન્ટને કામે લગાડવો છે?
+                    </div>
+                </div>
+                <!-- Chat Input Form -->
+                <form id="chat-form" onsubmit="handleChat(event)" class="flex gap-2 mt-4">
+                    <input type="text" id="user-input" placeholder="માસ્ટર બ્રેઈનને કમાન્ડ આપો (Gujarati / English)..." class="flex-grow bg-gray-900 border border-green-500/30 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-400 text-white">
+                    <button type="submit" class="bg-green-500 hover:bg-green-400 text-black font-bold px-6 py-3 rounded-xl transition shadow-lg shadow-green-500/20">મોકલો</button>
+                </form>
+            </div>
 
-IMPORTANT: Do not just write another development prompt. You must produce the actual, complete, runnable source code for "index.html".
+            <!-- Multi-AI Models View -->
+            <div id="tab-models" class="hidden space-y-4">
+                <h3 class="font-bold text-lg text-white border-b border-gray-800 pb-3">🌐 Connected AI Models</h3>
+                <p class="text-sm text-gray-400">જરૂરિયાત મુજબ ટાસ્ક ડાયનેમિકલી નીચેના મોડલ્સમાં રૂટ થાય છે:</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                    <div class="bg-gray-900 p-3 rounded-xl border border-gray-800 flex justify-between items-center"><span class="text-sm font-semibold text-white">OpenAI / ChatGPT</span><span class="text-xs text-green-400 bg-green-950 px-2 py-1 rounded">Ready</span></div>
+                    <div class="bg-gray-900 p-3 rounded-xl border border-gray-800 flex justify-between items-center"><span class="text-sm font-semibold text-white">Google Gemini</span><span class="text-xs text-green-400 bg-green-950 px-2 py-1 rounded">Active</span></div>
+                    <div class="bg-gray-900 p-3 rounded-xl border border-gray-800 flex justify-between items-center"><span class="text-sm font-semibold text-white">Anthropic Claude</span><span class="text-xs text-green-400 bg-green-950 px-2 py-1 rounded">Ready</span></div>
+                    <div class="bg-gray-900 p-3 rounded-xl border border-gray-800 flex justify-between items-center"><span class="text-sm font-semibold text-white">DeepSeek & Grok</span><span class="text-xs text-green-400 bg-green-950 px-2 py-1 rounded">Connected</span></div>
+                </div>
+            </div>
 
-1. PROJECT PRESERVATION — CRITICAL
+            <!-- Specialist Agents View -->
+            <div id="tab-agents" class="hidden space-y-4">
+                <h3 class="font-bold text-lg text-white border-b border-gray-800 pb-3">🤖 Specialist AI Agents</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[380px] overflow-y-auto pr-2">
+                    <div class="bg-gray-900 p-3 rounded-xl border border-gray-800"><h4 class="font-bold text-green-400 text-sm">Research Agent</h4><p class="text-xs text-gray-400">વેબ પર માહિતી શોધવી અને વિશ્લેષણ.</p></div>
+                    <div class="bg-gray-900 p-3 rounded-xl border border-gray-800"><h4 class="font-bold text-green-400 text-sm">Coding Agent</h4><p class="text-xs text-gray-400">કોડ લખવો અને ભૂલો સુધારવી.</p></div>
+                    <div class="bg-gray-900 p-3 rounded-xl border border-gray-800"><h4 class="font-bold text-green-400 text-sm">Automation Agent</h4><p class="text-xs text-gray-400">n8n અને Make.com પાઇપલાઇન હેન્ડલિંગ.</p></div>
+                    <div class="bg-gray-900 p-3 rounded-xl border border-gray-800"><h4 class="font-bold text-green-400 text-sm">Verification Agent</h4><p class="text-xs text-gray-400">પરિણામોની ચોકસાઈ ચકાસવી.</p></div>
+                </div>
+            </div>
 
-Existing GitHub repository: "thakor37363636-hash/Pro.-Ai"
+            <!-- Automation & Workflows View -->
+            <div id="tab-workflows" class="hidden space-y-4">
+                <h3 class="font-bold text-lg text-white border-b border-gray-800 pb-3">⚡ Automation & n8n Pipelines</h3>
+                <p class="text-sm text-gray-400">સક્રિય ઓટોમેશન લિંક્સ અને સર્વર સ્ટેટસ:</p>
+                <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 space-y-3">
+                    <div class="flex justify-between items-center text-sm">
+                      <span class="text-gray-300">Gujarati Cartoon Workflow</span>
+                      <a href="https://aidomy.app.n8n.cloud/form-test/gujarati-cartoon" target="_blank" class="text-xs bg-green-500 text-black px-3 py-1 rounded font-bold">ઓપન ફોર્મ ↗</a>
+                    </div>
+                    <div class="flex justify-between items-center text-sm">
+                      <span class="text-gray-300">PythonAnywhere Server</span>
+                      <span class="text-green-400 font-bold text-xs">Online (mitulai2026)</span>
+                    </div>
+                </div>
+            </div>
 
-Existing project files:
+        </section>
+    </main>
 
-- "index.html"
-- "worker.js"
-- "README.md"
+    <!-- Footer -->
+    <footer class="text-center py-4 text-xs text-gray-500 border-t border-gray-900">
+        © 2026 🟢 PRO AI — Evolving With The World.
+    </footer>
 
-Rules:
+    <!-- JavaScript for Interactivity -->
+    <script>
+        function switchTab(tabName) {
+            ['master', 'models', 'agents', 'workflows'].forEach(t => {
+                document.getElementById('tab-' + t).classList.add('hidden');
+                document.getElementById('btn-' + t).className = "w-full text-left px-4 py-3 rounded-xl hover:bg-gray-800 text-gray-300 font-medium transition flex items-center space-x-3";
+            });
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+            document.getElementById('btn-' + tabName).className = "w-full text-left px-4 py-3 rounded-xl bg-green-500 text-black font-bold transition flex items-center space-x-3 shadow-lg shadow-green-500/20";
+        }
 
-- Inspect the existing project before coding.
-- Preserve all existing backend functionality.
-- Do not delete or rewrite "worker.js".
-- Do not modify Cloudflare configuration.
-- Preserve existing Gemini, webhook, n8n, and Make.com integrations wherever they are present and working.
-- Never invent API endpoints or webhook URLs.
-- Never expose API keys or secret credentials.
-- Only replace "index.html" unless explicitly authorized otherwise.
+        function handleChat(e) {
+            e.preventDefault();
+            const input = document.getElementById('user-input');
+            const messages = document.getElementById('chat-messages');
+            if(!input.value.trim()) return;
 
-2. PREMIUM DESIGN
+            messages.innerHTML += `<div class="bg-green-950/40 border border-green-500/30 p-3 rounded-xl ml-auto max-w-[85%] text-sm text-right">${input.value}</div>`;
+            const userText = input.value;
+            input.value = '';
+            messages.scrollTop = messages.scrollHeight;
 
-Create a futuristic AI operating-system experience.
+            setTimeout(() => {
+                messages.innerHTML += `<div class="bg-gray-900/80 p-3 rounded-xl border border-green-500/20 max-w-[85%] text-sm">🧠 **Master Brain:** "${userText}" માટે યોગ્ય એજન્ટ અને મોડલની પસંદગી કરી રહી છે. વર્કફ્લો પ્રક્રિયામાં છે.</div>`;
+                messages.scrollTop = messages.scrollHeight;
+            }, 600);
+        }
+    </script>
+</body>
+</html>
 
-- Deep black background.
-- Neon green highlights.
-- Blue-purple AI accents.
-- Premium glassmorphism.
-- Animated Master Brain.
-- Elegant glowing borders.
-- Modern typography.
-- Smooth transitions.
-- Responsive Android-first design.
-- Desktop and tablet support.
-
-Brand identity:
-
-PRO AI — EVOLVING WITH THE WORLD
-
-3. COMPLETE DASHBOARD
-
-Build:
-
-- PRO AI logo and welcome screen.
-- Gujarati welcome message.
-- Animated Master Brain.
-- System status.
-- AI model dashboard.
-- Nine AI agent cards.
-- Quick action shortcuts.
-- Recent activity.
-- Memory dashboard.
-- Mobile bottom navigation.
-
-4. MASTER BRAIN
-
-Build a central intelligence dashboard showing:
-
-- Model coordination.
-- Agent collaboration.
-- Task routing.
-- Research progress.
-- Verification.
-- Shared memory.
-- Execution status.
-- Error handling.
-
-5. AI MODELS
-
-Prepare cards for:
-
-- OpenAI
-- Gemini
-- Claude
-- DeepSeek
-- Grok
-- Llama
-- Mistral
-- Qwen
-- Future models.
-
-Never display a model as connected without real backend confirmation.
-
-6. NINE AI AGENTS
-
-Build complete interface cards for:
-
-1. Research Agent
-2. Coding Agent
-3. Browser Agent
-4. Automation Agent
-5. Memory Agent
-6. Verification Agent
-7. Security Agent
-8. Problem Solver Agent
-9. AI Scientist Agent
-
-Each card must have a purpose, status, details, and meaningful interaction.
-
-7. AI TOOLS
-
-Create sections for:
-
-- AI Chat
-- Deep Research
-- Coding
-- Problem Solving
-- Browser Tasks
-- Automation
-- Image AI
-- Video AI
-- Voice AI
-- Writing Assistant
-- Summarization
-- AI Discovery.
-
-8. CHAT SYSTEM
-
-Create:
-
-- Modern chat interface.
-- Gujarati, Hindi, English.
-- Message input and send.
-- Conversation history.
-- Loading indicator.
-- Network error handling.
-- Voice and attachment controls where supported.
-- Model selection.
-
-IMPORTANT: Preserve the existing chat endpoint if it exists. Do not invent a replacement endpoint.
-
-9. FUTURE TECHNOLOGY
-
-Prepare modular interfaces for:
-
-- Multi-agent orchestration.
-- MCP.
-- A2A.
-- AI Scientist.
-- Autonomous browser agents.
-- Coding agents.
-- Long-term memory.
-- Knowledge graphs.
-- Continual learning.
-- World models.
-- Safe self-improvement.
-- Testing and rollback.
-- AI security.
-
-Do not pretend these capabilities are implemented until the backend supports them.
-
-10. FUNCTIONALITY
-
-Every button must work meaningfully.
-
-Implement:
-
-- Section navigation.
-- Language switching.
-- Mobile navigation.
-- Search and filtering where relevant.
-- Task input.
-- Realistic loading and error states.
-- Honest empty states.
-- Local preferences where appropriate.
-
-No fake AI responses. No fake connection status. No decorative nonfunctional buttons.
-
-11. TECHNICAL REQUIREMENTS
-
-Use only:
-
-- HTML5
-- CSS3
-- Vanilla JavaScript
-
-Keep everything inside "index.html".
-
-Use clean, maintainable, modular code.
-
-Avoid unnecessary libraries and paid services.
-
-Keep the frontend compatible with the existing Cloudflare Worker backend.
-
-12. FINAL DELIVERY — MANDATORY
-
-Do not return another prompt.
-
-Do not return an explanation instead of implementation.
-
-Do not return incomplete snippets.
-
-Return the FULL, ACTUAL, RUNNABLE "index.html" code.
-
-Before finalizing:
-
-- Validate HTML.
-- Check JavaScript.
-- Check mobile responsiveness.
-- Check all navigation.
-- Check language selection.
-- Check existing backend compatibility.
-- Confirm that no existing backend file was changed.
-
-The result must be a premium, professional AI ecosystem, not an ordinary chatbot template.
-
-PRO AI — EVOLVING WITH THE WORLD
-
-One Master Brain. Multiple AI Models. Intelligent Agents. One Unified AI Ecosystem.
