@@ -37,26 +37,17 @@ export default {
     // 2. Master Brain Multi-Model Chat Route
     if (url.pathname === '/api/chat' && request.method === 'POST') {
       try {
-        const body = await request.json();
-        const userPrompt = body.prompt || '';
-        const requestedModel = body.model || 'auto';
+        let body;
+        try {
+          body = await request.json();
+        } catch (e) {
+          body = { prompt: 'Hello' };
+        }
 
-        const API_KEYS = {
-          gemini: "AQ.Ab8RN6KvlKoyTNZkdyrI6uFBI3uGbWBFcDwjwiueJnNwbCcRMA",
-          gpt: "તમારી_GPT_API_KEY_અહીં_મૂકો",
-          deepseek: "તમારી_DEEPSEEK_API_KEY_અહીં_મૂકો",
-          claude: "તમારી_CLAUDE_API_KEY_અહીં_મૂકો",
-          grok: "તમારી_GROK_API_KEY_અહીં_મૂકો",
-          llama: "તમારી_LLAMA_API_KEY_અહીં_મૂકો",
-          mistral: "તમારી_MISTRAL_API_KEY_અહીં_મૂકો",
-          qwen: "તમારી_QWEN_API_KEY_અહીં_મૂકો"
-        };
+        const userPrompt = body.prompt || 'Hello';
+        const apiKey = "AQ.Ab8RN6KvlKoyTNZkdyrI6uFBI3uGbWBFcDwjwiueJnNwbCcRMA";
 
-        let selectedAI = 'Google Gemini 1.5 Flash';
-        let aiReply = '';
-
-        // Gemini API Call
-        const geminiResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEYS.gemini}`, {
+        const geminiResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -64,15 +55,20 @@ export default {
           })
         });
 
-        const geminiData = await geminiResponse.json();
-        aiReply = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || 'માસ્ટર બ્રેઈનને રિસ્પોન્સ મેળવવામાં મુશ્કેલી થઈ.';
+        const geminiText = await geminiResponse.text();
+        let geminiData;
+        try {
+          geminiData = JSON.parse(geminiText);
+        } catch (e) {
+          throw new Error('Gemini API invalid JSON response: ' + geminiText);
+        }
+
+        const aiReply = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || 'માસ્ટર બ્રેઈનને રિસ્પોન્સ મેળવવામાં મુશ્કેલી થઈ.';
 
         return new Response(JSON.stringify({
           success: true,
           orchestrator: 'Master Brain Ecosystem',
-          model_used: selectedAI,
-          user_prompt: userPrompt,
-          agent_assigned: 'General Assistant',
+          model_used: 'Google Gemini 1.5 Flash',
           response: aiReply
         }), { headers: corsHeaders });
 
@@ -80,12 +76,13 @@ export default {
         return new Response(JSON.stringify({
           success: false,
           error: error.message
-        }), { status: 500, headers: corsHeaders });
+        }), { headers: corsHeaders });
       }
     }
 
     return new Response(JSON.stringify({ 
-      message: 'PRO AI Master Brain v5.0 is running. Use /api/status or /api/chat' 
+      success: true,
+      message: 'PRO AI Master Brain v5.0 is running.' 
     }), { headers: corsHeaders });
   }
 };
