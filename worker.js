@@ -1,51 +1,41 @@
-export default {
-  async fetch(request, env, ctx) {
-    const url = new URL(request.url);
-
-    const corsHeaders = {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Content-Type': 'application/json'
-    };
-
-    if (request.method === 'OPTIONS') {
-      return new Response(null, { headers: corsHeaders });
-    }
-
-    if (request.method === 'POST') {
-      try {
+if (request.method === 'POST') {
+    try {
         const body = await request.json();
         const userPrompt = body.prompt || 'Hello';
-        const apiKey = "AQ.Ab8RN6KvlKoyTNZkdyrI6uFBI3uGbWBFcDwjwiueJnNwbCcRMA";
+        const apiKey = env.GEMINI_API_KEY || "AQ..YOUR_KEY.."; // અથવા એન્વાયર્નમેન્ટ વેરીએબલ
 
         const geminiResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: userPrompt }] }]
-          })
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                contents: [{ parts: [{ text: userPrompt }] }]
+            })
         });
 
-        const geminiData = await geminiResponse.json();
-        const aiReply = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || 'માસ્ટર બ્રેઈનને રિસ્પોન્સ મેળવવામાં મુશ્કેલી થઈ.';
+        // ચેક કરો કે રિસ્પોન્સ JSON છે કે નહીં
+        const responseText = await geminiResponse.text();
+        let geminiData;
+        try {
+            geminiData = JSON.parse(responseText);
+        } catch (e) {
+            throw new Error("API سے અયોગ્ય રિસ્પોન્સ મળ્યો: " + responseText);
+        }
+
+        if (!geminiResponse.ok) {
+            throw new Error(geminiData.error?.message || "Gemini API એરર આવી છે.");
+        }
+
+        const aiReply = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || 'કોઈ જવાબ મળ્યો નથી';
 
         return new Response(JSON.stringify({
-          success: true,
-          response: aiReply
-        }), { headers: corsHeaders });
+            success: true,
+            response: aiReply
+        }), { headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
 
-      } catch (error) {
+    } catch (error) {
         return new Response(JSON.stringify({
-          success: false,
-          error: error.message
-        }), { headers: corsHeaders });
-      }
+            success: false,
+            error: error.message
+        }), { headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
     }
-
-    return new Response(JSON.stringify({
-      status: 'online',
-      message: 'PRO AI Master Brain v5.0 API is running'
-    }), { headers: corsHeaders });
-  }
-};
+}
